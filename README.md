@@ -11,7 +11,7 @@ security
 Adding Vulnerability Detection and Compliance Auditing to My SIEM
 
 Introduction
-My name is Maryanne Hadley, and I am a cybersecurity professional driven by one core purpose — building digital environments where threats don’t stand a chance.
+My name is Maryanne Hadley, and I am a cybersecurity professional driven by one core purpose — building digital environments where threats don't stand a chance.
 
 My path into cybersecurity was built on curiosity, determination, and an unwillingness to accept the status quo. Fascinated by the way systems communicate and where they become vulnerable, I pursued hands-on training in network security, threat intelligence, and incident management. What sets me apart isn’t just what I know — it’s how I think. I approach every system the way an attacker would, so I can defend it the way a protector must. Through rigorous study and real-world application, I developed the technical skills to monitor enterprise-level networks, identify vulnerabilities before they’re exploited, contain active threats, and translate complex security risks into clear, actionable strategies for teams at every level of an organization. response. I didn’t just want to understand technology — I wanted to protect it.
 My original plan for this sprint had nothing to do with vulnerability scanning. I was going to bolt Sysmon onto my Windows endpoint and dig into process-level visibility. Somewhere along the way, a different question started nagging at me instead: forget “can I see what a process did” for a second — do I even know what's broken on these machines to begin with?
@@ -26,21 +26,12 @@ My environment has a handful of endpoints reporting into a central wazuh-siem se
 On paper, the plan was simple. Turn on Vulnerability Detection, get the agent installed on each machine, and run the right CIS Benchmark policy against each OS — the 2022 benchmark for USERENDPOINT, the 2019 for ad01.
 In reality, just getting all my agents to show up as “active” turned into its own little saga. Three connected without a fight. The fourth — my internal firewall box — sat stuck on “never connected” no matter how long I waited, or how many times I refreshed the dashboard like that was somehow going to help. Eventually I actually logged into the host itself, and the answer was almost funny in how simple it was: the Wazuh agent service wasn't even running. Not a firewall rule. Not a DNS issue. It just never started. I re-ran the enrollment and registration process from scratch. The service came up, and the agent finally started phoning home like it should have all along.
 By the end, the Endpoints dashboard looked like this:
-Agent
-OS
-Status
-USERENDPOINT
-Windows Server 2022
-Active
-ad01
-Windows Server 2019
-Active
-observer
-Ubuntu 24.04 LTS
-Active
-internal-fw.megaquagga.local
-—
-Active (after re-enrollment)
+Agent	OS	Status
+USERENDPOINT	Windows Server 2022	Active
+ad01	Windows Server 2019	Active
+observer	Ubuntu 24.04 LTS	Active
+internal-fw.megaquagga.local	—	Active (after re-enrollment)
+
 
 Experiment time!
 Experiment 1: Agent Deployment and Activation Verification
