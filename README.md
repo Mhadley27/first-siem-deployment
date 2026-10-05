@@ -2,7 +2,14 @@
 
 `cybersecurity` `devops` `monitoring` `security`
 
-**Adding Vulnerability Detection and Compliance Auditing to My SIEM**
+Adding Vulnerability Detection and Compliance Auditing to My SIEM
+blog_post/
+├── README.md
+└── images/
+    ├── wazuh-agents.png
+    ├── userendpoint-vulnerabilities.png
+    ├── observer-vulnerabilities.png
+    └── cis-compliance.png
 
 ## Introduction
 
@@ -16,9 +23,9 @@ My original plan for this sprint had nothing to do with vulnerability scanning. 
 
 My environment had a handful of endpoints reporting into a central `wazuh-siem` server:
 
-- **USERENDPOINT** - Windows Server 2022 Standard
-- **ad01** - Windows Server 2019 Standard
-- **observer** - Ubuntu 24.04 LTS
+- USERENDPOINT - Windows Server 2022 Standard
+- ad01** - Windows Server 2019 Standard
+- observer - Ubuntu 24.04 LTS
 - **internal-fw.megaquagga.local** - an internal firewall host
 
 On paper, the plan was simple. Turn on Vulnerability Detection, get the agent installed on each machine, and run the right CIS Benchmark policy against each OS: the 2022 benchmark for USERENDPOINT and the 2019 benchmark for ad01.
